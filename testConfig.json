@@ -1,0 +1,9 @@
+{
+    "baseUrl":"https://juice-shop.herokuapp.com/#/",
+    "firstEmail":"namanfusion",
+    "lastEmail":"@gmail.com",
+    "password":"password123",
+    "repeatPassword":"password123",
+    "securityAnswer":"none",    
+    "userName":"hehehaha"
+}
