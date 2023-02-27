@@ -1,5 +1,5 @@
 const { removeSync } = require('fs-extra');
-const allure = require('allure-commandline')
+//const allure = require('allure-commandline')
 
 exports.config = {
     //
