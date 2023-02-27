@@ -1,13 +1,10 @@
 const { removeSync } = require('fs-extra');
-//const allure = require('allure-commandline')
-
-exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    // WebdriverIO supports running e2e tests as well as unit and component tests.
-    runner: 'local',
+const dataInp = require('./testConfig.json')
+exports.config = 
+{
+    //BrowserStack config
+    user: dataInp.browserStackUserName,
+    key: dataInp.browserStackKey,
     
     //
     // ==================
