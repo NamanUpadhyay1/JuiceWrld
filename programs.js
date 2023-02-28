@@ -48,7 +48,7 @@
 // const array2 = [1,2,5,6,7]
 // const answer = intersection(array1,array2)
 // console.log(answer);
-
+ 
 // 4th Question ~ Write a function that takes a stringing as input and returns true if the stringing contains all the letters of the alphabet, and false otherwise.
 
 
