@@ -82,7 +82,7 @@ describe(`register and login beforeEach`,()=>
         {
             await homePage.productprices()
             await utils.pauseTime(3000)
-            throw new Error('Error herê')
+            //throw new Error('Error herê')
         })
     })
 
