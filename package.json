@@ -14,9 +14,10 @@
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "browserstack": "wdio run ./browser.conf.js",
-    "allure-report": "allure generate --clean ./reports/allure/allure-results -o ./reports/allure/allure-report && allure open"
+    "allure-report": "allure generate --clean allure-results && allure open"
   },
   "dependencies": {
+    "allure-commandline": "^2.21.0",
     "chai": "^4.3.7"
   }
 }

@@ -11,7 +11,6 @@ const { assert, expect, util } = require('chai')
 
 
 
-
 describe(`register and login beforeEach`,()=>
 {
     before('optional description',async function ()
@@ -87,3 +86,4 @@ describe(`register and login beforeEach`,()=>
     })
 
 })
+    //"allure-report": "allure generate --clean ./reports/allure/allure-results -o ./reports/allure/allure-report && allure open"
