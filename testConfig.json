@@ -5,5 +5,10 @@
     "password":"password123",
     "repeatPassword":"password123",
     "securityAnswer":"none",    
-    "userName":"hehehaha"
+    "userName":"hehehaha",
+
+    "browserStackUserName":"naman_sxuU92",
+    "browserStackKey":"VWtnAPxsH8CSrNxMDBiZ",
+    "browserStack":true,
+    "headless":true
 }

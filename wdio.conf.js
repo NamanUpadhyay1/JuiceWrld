@@ -1,12 +1,11 @@
 const { removeSync } = require('fs-extra');
-
-exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    // WebdriverIO supports running e2e tests as well as unit and component tests.
-    runner: 'local',
+const dataInp = require('./testConfig.json')
+const allure = require('allure-commandline')
+exports.config = 
+{
+    //BrowserStack config
+    user: dataInp.browserStackUserName,
+    key: dataInp.browserStackKey,
     
     //
     // ==================
@@ -119,7 +118,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    //services: ['chromedriver'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -147,8 +146,8 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [['allure', {
         outputDir: 'allure-results',
-        // disableWebdriverStepsReporting: true,
-        // disableWebdriverScreenshotsReporting: false,
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
     }]],
        
     //
@@ -175,6 +174,10 @@ exports.config = {
         removeSync('allure-results');
         removeSync('allure-report');      
     },
+    //onPrepare: function (config, capabilities) {
+    //     removeSync('allure-results');
+    //     removeSync('allure-report');      
+    // },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -225,8 +228,27 @@ exports.config = {
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
      */
-    // beforeSuite: function (suite) {
-    // },
+    beforeSuite: function (suite) 
+    {
+        // const fs = require('fs')
+        // let dir = allureDir+'allure-results'
+
+        // try{
+        // if(fs.existsSync(dir))
+        // {
+        // fs.rmSync(dir,{recursive: true})
+        // console.log(`${dir} is deleted!`);
+        // }
+        // }catch(err)
+        // {
+        //     console.error("error while deleting this dir")
+        //     if(!fs.existsSync(dir))
+        //     {
+        //         fs.mkdirSync(dir, {recursive: true})
+        //         console.log("dir got created");
+        //     }
+        // }
+    },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
@@ -259,11 +281,9 @@ exports.config = {
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries })
     {   
-        if(error)
+        if (!passed) 
         {
-            let screenShot = browser.takeScreenshot();
-            browser.saveScreenshot(`./screenshots/${screenShot}`);
-            browser.takeScreenshot()
+            await browser.takeScreenshot();
         }
     },
     /**
@@ -310,6 +330,28 @@ exports.config = {
     // onComplete: function(exitCode, config, capabilities, results) 
     // {    
     // },
+        // ...
+        onComplete: function() {
+            const reportError = new Error('Could not generate Allure report')
+            const generation = allure(['generate', 'allure-results', '--clean'])
+            return new Promise((resolve, reject) => {
+                const generationTimeout = setTimeout(
+                    () => reject(reportError),
+                    5000)
+    
+                generation.on('exit', function(exitCode) {
+                    clearTimeout(generationTimeout)
+    
+                    if (exitCode !== 0) {
+                        return reject(reportError)
+                    }
+    
+                    console.log('Allure report successfully generated')
+                    resolve()
+                })
+            })
+        }
+    
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session
