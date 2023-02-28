@@ -8,6 +8,8 @@ config.capabilities = [
         maxInstances: 5,
         //
         browserName: 'chrome',//chrome//firefox//MicrosoftEdge
+        
+        acceptInsecureCerts: true,
         "os" : "OS X",
         "osVersion" : "Sierra",
         "browserVersion" : "103.0",

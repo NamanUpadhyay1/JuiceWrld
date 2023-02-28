@@ -58,7 +58,7 @@ describe(`register and login beforeEach`,()=>
 
 //     it('Update your profile picture', async()=>
 //     {
-        
+       
 //         const filePath = 'seleniumPhoto.png'
 //         const remoteFilePath = await browser.uploadFile(filePath)
 
