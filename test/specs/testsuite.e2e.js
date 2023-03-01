@@ -35,55 +35,45 @@ describe(`register and login beforeEach`,()=>
         await loginpage.logInForm(recentEmail)
         await browser.pause(2000)
     })
-// it('printing',async()=>
-// {
-//     console.log("printing shinting");
-// })
 
-// describe('to Verify user is able to change their profile picture',()=>
-// {
-//     it('Navigate to the Account button',async()=>
-//     {
-//         await homePage.accountButton()
-//         await homePage.profileButton()
-//         await browser.pause(2000)
-//     })
-//     it('Update your profile nickname',async()=>
-//     {
-//         await profilePage.userNameInput()
-//         await profilePage.profileSubmitButton()
-//         await browser.pause(2000)
-//     })
 
-//     it('Update your profile picture', async()=>
-//     {
-       
-//         const filePath = 'seleniumPhoto.png'
-//         const remoteFilePath = await browser.uploadFile(filePath)
-
-//         await profilePage.chooseFileButton().setValue(remoteFilePath)
-//         await profilePage.uploadButton()    
-//         await browser.pause(2000)
-//     })
-    
-// })
-// })
-
-// it('Assert the profile picture',async()=>
-    // {
-    //     const actualSrc = await profilePage.actualSrc().getAttribute('src')
-    //     console.log(`-The SRC is : ${actualSrc}`);
-    //     expect(actualSrc).contains("assets/public/images/uploads/")
-     
-    describe('Prices on the home page',()=>
+describe('to Verify user is able to change their profile picture',()=>
+{
+    it('Navigate to the Account button',async()=>
     {
-        it('checking prices', async()=>
-        {
-            await homePage.productprices()
-            await utils.pauseTime(3000)
-            //throw new Error('Error herê')
-        })
+        await homePage.accountButton()
+        await homePage.profileButton()
+        await browser.pause(2000)
+    })
+    it('Update your profile nickname',async()=>
+    {
+        await profilePage.userNameInput()
+        await profilePage.profileSubmitButton()
+        await browser.pause(2000)
     })
 
+    it('Update your profile picture', async()=>
+    {
+       
+        const filePath = 'seleniumPhoto.png'
+        const remoteFilePath = await browser.uploadFile(filePath)
+        await profilePage.chooseFileButton().setValue(remoteFilePath)
+        await profilePage.uploadButton()    
+        await browser.pause(2000)
+    })
+    
 })
-    //"allure-report": "allure generate --clean ./reports/allure/allure-results -o ./reports/allure/allure-report && allure open"
+     
+// describe('Prices on the home page',()=>
+//     {
+//         it('checking prices', async()=>
+//         {
+//             await homePage.productprices()
+//             await utils.pauseTime(3000)
+//             //throw new Error('Error herê')
+//         })
+//     })
+
+})
+
+//chrome//firefox//MicrosoftEdge

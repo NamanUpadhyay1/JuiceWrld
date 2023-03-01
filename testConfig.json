@@ -9,6 +9,7 @@
 
     "browserStackUserName":"naman_sxuU92",
     "browserStackKey":"VWtnAPxsH8CSrNxMDBiZ",
-    "browserStack":true,
-    "headless":true
+    "browserStack":false,
+    "browser":"chrome",
+    "executionmode":"--headless"
 }
